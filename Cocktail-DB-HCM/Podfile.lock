@@ -1,36 +1,71 @@
 PODS:
   - Alamofire (5.6.4)
-  - RxCocoa (6.5.0):
-    - RxRelay (= 6.5.0)
-    - RxSwift (= 6.5.0)
-  - RxRelay (6.5.0):
-    - RxSwift (= 6.5.0)
-  - RxSwift (6.5.0)
+  - Differentiator (5.0.0)
+  - "NSObject+Rx (5.2.2)":
+    - RxSwift (~> 6.2)
+  - ObjectMapper (3.5.3)
+  - Reusable (4.1.2):
+    - Reusable/Storyboard (= 4.1.2)
+    - Reusable/View (= 4.1.2)
+  - Reusable/Storyboard (4.1.2)
+  - Reusable/View (4.1.2)
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
   - SDWebImage (5.12.6):
     - SDWebImage/Core (= 5.12.6)
   - SDWebImage/Core (5.12.6)
+  - SnapKit (5.0.1)
+  - Then (3.0.0)
 
 DEPENDENCIES:
-  - Alamofire (= 5.6.4)
-  - RxCocoa (= 6.5.0)
-  - RxSwift (= 6.5.0)
-  - SDWebImage (= 5.12.6)
+  - Alamofire (~> 5.4)
+  - "NSObject+Rx"
+  - ObjectMapper (~> 3.5)
+  - Reusable
+  - RxCocoa (= 6.2.0)
+  - RxDataSources (~> 5.0)
+  - RxSwift (= 6.2.0)
+  - SDWebImage (~> 5.0)
+  - SnapKit (~> 5.0.0)
+  - Then
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Differentiator
+    - "NSObject+Rx"
+    - ObjectMapper
+    - Reusable
     - RxCocoa
+    - RxDataSources
     - RxRelay
     - RxSwift
     - SDWebImage
+    - SnapKit
+    - Then
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
-  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
-  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
-  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  "NSObject+Rx": 61cf1f7306a73dcef8b36649198af0813ec18dfd
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SDWebImage: a47aea9e3d8816015db4e523daff50cfd294499d
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 345c6b89414129b9cad88fb940ea51f8057d464e
+PODFILE CHECKSUM: 73b65d78f30db79b237c00332b310bd3b3aecce8
 
 COCOAPODS: 1.11.3

@@ -11,5 +11,15 @@ final class TabbarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+    }
+    
+    private func setupView() {
+        tabBar.do {
+            $0.tintColor = .yellow
+            $0.unselectedItemTintColor = .lightGray
+            $0.backgroundColor = .black
+            $0.backgroundImage = UIImage()
+        }
     }
 }

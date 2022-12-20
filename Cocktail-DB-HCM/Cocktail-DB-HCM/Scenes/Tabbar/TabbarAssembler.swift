@@ -15,8 +15,6 @@ protocol TabbarAssembler {
 extension TabbarAssembler {
     func resolve(navigationController: UINavigationController) -> TabbarViewController {
         let tabbarVC = TabbarViewController()
-        tabbarVC.tabBar.tintColor = UIColor.MyTheme.primary
-        tabbarVC.tabBar.backgroundColor = .white
         
         let navigator: TabbarNavigatorType = resolve(navigationController: navigationController)
         let homeNavController = UINavigationController()

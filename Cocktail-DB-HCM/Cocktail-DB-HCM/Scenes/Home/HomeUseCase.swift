@@ -6,9 +6,17 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol HomeUseCaseType {
+    func getListCocktails(category: CocktailCategory) -> Observable<[Cocktail]>
 }
 
 struct HomeUseCase: HomeUseCaseType {
+    
+    let cocktailRepository: CocktailRepositoryType
+    
+    func getListCocktails(category: CocktailCategory) -> Observable<[Cocktail]> {
+        return cocktailRepository.getListCocktails(category: category)
+    }
 }

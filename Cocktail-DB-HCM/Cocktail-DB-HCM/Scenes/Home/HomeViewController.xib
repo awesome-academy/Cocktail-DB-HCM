@@ -4,12 +4,12 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Cocktail_DB_HCM" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="22p-he-G1d" id="htV-fV-6Xm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,14 +17,50 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="22p-he-G1d">
+                    <rect key="frame" x="0.0" y="130" width="414" height="766"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wineglass.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Q77-8j-HI5">
+                    <rect key="frame" x="16" y="63" width="50" height="52"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="4NP-Ur-XFz"/>
+                        <constraint firstAttribute="width" constant="50" id="dIa-CH-s7X"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTh-DO-7qz">
+                    <rect key="frame" x="66" y="84.5" width="73" height="29.5"/>
+                    <attributedString key="attributedText">
+                        <fragment content="WINEST">
+                            <attributes>
+                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <font key="NSFont" size="24" name="Impact"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" lineHeightMultiple="1" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemMintColor"/>
-            <point key="canvasLocation" x="112" y="109"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="22p-he-G1d" secondAttribute="trailing" id="5iv-od-LMN"/>
+                <constraint firstItem="gTh-DO-7qz" firstAttribute="leading" secondItem="Q77-8j-HI5" secondAttribute="trailing" id="8hw-98-JdS"/>
+                <constraint firstItem="22p-he-G1d" firstAttribute="top" secondItem="Q77-8j-HI5" secondAttribute="bottom" constant="16" id="Eqe-0Y-T7u"/>
+                <constraint firstItem="gTh-DO-7qz" firstAttribute="bottom" secondItem="Q77-8j-HI5" secondAttribute="bottom" id="Lj2-Gc-lJ0"/>
+                <constraint firstItem="Q77-8j-HI5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="gik-wj-b4E"/>
+                <constraint firstAttribute="bottom" secondItem="22p-he-G1d" secondAttribute="bottom" id="lGC-YG-ghb"/>
+                <constraint firstItem="Q77-8j-HI5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="rnI-ZU-qNI"/>
+                <constraint firstItem="22p-he-G1d" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ufy-Y4-1z5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gTh-DO-7qz" secondAttribute="trailing" constant="16" id="woM-2e-sfP"/>
+            </constraints>
+            <point key="canvasLocation" x="111.59420289855073" y="108.48214285714285"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="wineglass.fill" catalog="system" width="95" height="128"/>
     </resources>
 </document>

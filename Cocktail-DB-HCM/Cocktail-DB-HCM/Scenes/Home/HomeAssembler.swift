@@ -18,7 +18,7 @@ extension HomeAssembler {
     func resolve(navigationController: UINavigationController) -> HomeViewController {
         let viewController = HomeViewController()
         let viewModel: HomeViewModel = resolve(navigationController: navigationController)
-        viewController.bindViewModel(to: viewModel)
+        viewController.viewModel = viewModel
         return viewController
     }
 
@@ -36,6 +36,6 @@ extension HomeAssembler where Self: DefaultAssembler {
     }
 
     func resolve() -> HomeUseCaseType {
-        return HomeUseCase()
+        return HomeUseCase(cocktailRepository: CocktailRepository())
     }
 }

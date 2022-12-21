@@ -18,7 +18,7 @@ extension SearchAssembler {
     func resolve(navigationController: UINavigationController) -> SearchViewController {
         let viewController = SearchViewController()
         let viewModel: SearchViewModel = resolve(navigationController: navigationController)
-        viewController.bindViewModel(to: viewModel)
+        viewController.viewModel = viewModel
         return viewController
     }
 
@@ -36,6 +36,6 @@ extension SearchAssembler where Self: DefaultAssembler {
     }
 
     func resolve() -> SearchUseCaseType {
-        return SearchUseCase()
+        return SearchUseCase(cocktailsRepository: CocktailRepository())
     }
 }

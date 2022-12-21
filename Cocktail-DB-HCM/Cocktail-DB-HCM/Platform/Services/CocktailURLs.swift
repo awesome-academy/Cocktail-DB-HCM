@@ -17,4 +17,8 @@ struct CocktailURLs {
     func getAllCocktailByCategory(category: CocktailCategory) -> String {
         return "\(baseURL)\(category.rawValue).php"
     }
+    
+    func getAllCocktailByName(query: String) -> String {
+        return "\(baseURL)search.php?s=\(query)"
+    }
 }

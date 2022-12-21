@@ -6,9 +6,16 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol SearchUseCaseType {
+    func getCocktailsByName(query: String) -> Observable<[Cocktail]>
 }
 
 struct SearchUseCase: SearchUseCaseType {
+    let cocktailsRepository: CocktailRepositoryType
+    
+    func getCocktailsByName(query: String) -> Observable<[Cocktail]> {
+        return cocktailsRepository.getCocktailsByName(query: query)
+    }
 }

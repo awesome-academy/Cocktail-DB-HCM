@@ -4,12 +4,15 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="Cocktail_DB_HCM" customModuleProvider="target">
             <connections>
+                <outlet property="searchAlertLabel" destination="GdI-yf-EqP" id="dP0-5L-JTM"/>
+                <outlet property="searchBackgroundView" destination="1hL-mm-ATJ" id="9ml-wi-uL8"/>
+                <outlet property="searchTextField" destination="Tyd-jc-WRx" id="T4g-Vg-dPS"/>
+                <outlet property="tableView" destination="OwC-QD-ksf" id="5rz-nR-eAE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,14 +20,89 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wineglass.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YgT-mH-JNN">
+                    <rect key="frame" x="16" y="62.333333333333314" width="50" height="51.666666666666686"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="KUi-CI-mef"/>
+                        <constraint firstAttribute="width" constant="50" id="MPN-m1-5JA"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WINEST" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8t3-WG-har">
+                    <rect key="frame" x="66" y="83" width="308" height="30"/>
+                    <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="24"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hL-mm-ATJ">
+                    <rect key="frame" x="16" y="129" width="358" height="40"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tyd-jc-WRx">
+                            <rect key="frame" x="52" y="0.0" width="306" height="40"/>
+                            <color key="backgroundColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="U17-fq-Zg1"/>
+                            </constraints>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="M2q-gi-ObQ">
+                            <rect key="frame" x="16" y="10.999999999999996" width="20" height="18.333333333333336"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="0bd-0n-ALs"/>
+                                <constraint firstAttribute="width" constant="20" id="UMg-TO-nBD"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="Tyd-jc-WRx" firstAttribute="top" secondItem="1hL-mm-ATJ" secondAttribute="top" id="4WT-BR-YiQ"/>
+                        <constraint firstAttribute="trailing" secondItem="Tyd-jc-WRx" secondAttribute="trailing" id="ARS-gx-4ib"/>
+                        <constraint firstItem="Tyd-jc-WRx" firstAttribute="leading" secondItem="M2q-gi-ObQ" secondAttribute="trailing" constant="16" id="Y8B-vu-lCZ"/>
+                        <constraint firstItem="M2q-gi-ObQ" firstAttribute="centerY" secondItem="1hL-mm-ATJ" secondAttribute="centerY" id="ctG-Hz-Pg9"/>
+                        <constraint firstItem="M2q-gi-ObQ" firstAttribute="leading" secondItem="1hL-mm-ATJ" secondAttribute="leading" constant="16" id="uhv-Fe-fVI"/>
+                        <constraint firstAttribute="height" constant="40" id="wvZ-TL-akz"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OwC-QD-ksf">
+                    <rect key="frame" x="16" y="185" width="358" height="659"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your cocktail could not be found, please try again!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdI-yf-EqP">
+                    <rect key="frame" x="5.3333333333333428" y="418.33333333333331" width="379.33333333333326" height="20.333333333333314"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemOrangeColor"/>
-            <point key="canvasLocation" x="132" y="-11"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="1hL-mm-ATJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="8al-99-5ay"/>
+                <constraint firstItem="YgT-mH-JNN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Bas-Hf-jZn"/>
+                <constraint firstItem="OwC-QD-ksf" firstAttribute="top" secondItem="1hL-mm-ATJ" secondAttribute="bottom" constant="16" id="CaU-KF-Dgy"/>
+                <constraint firstAttribute="trailing" secondItem="OwC-QD-ksf" secondAttribute="trailing" constant="16" id="GtH-k6-yNe"/>
+                <constraint firstItem="8t3-WG-har" firstAttribute="bottom" secondItem="YgT-mH-JNN" secondAttribute="bottom" id="HkA-90-BET"/>
+                <constraint firstItem="OwC-QD-ksf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Op7-Ld-Nti"/>
+                <constraint firstAttribute="bottom" secondItem="OwC-QD-ksf" secondAttribute="bottom" id="Tg4-04-SHU"/>
+                <constraint firstItem="GdI-yf-EqP" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="f5Y-v1-MES"/>
+                <constraint firstItem="1hL-mm-ATJ" firstAttribute="top" secondItem="YgT-mH-JNN" secondAttribute="bottom" constant="16" id="km4-Bz-fm1"/>
+                <constraint firstItem="YgT-mH-JNN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="mft-kI-us8"/>
+                <constraint firstItem="GdI-yf-EqP" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="ogO-H6-hdS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8t3-WG-har" secondAttribute="trailing" constant="16" id="ojQ-X3-TLu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1hL-mm-ATJ" secondAttribute="trailing" constant="16" id="tzg-rH-uTq"/>
+                <constraint firstItem="8t3-WG-har" firstAttribute="leading" secondItem="YgT-mH-JNN" secondAttribute="trailing" id="xQG-kL-Jdb"/>
+            </constraints>
+            <point key="canvasLocation" x="130.76923076923077" y="-11.374407582938389"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="wineglass.fill" catalog="system" width="95" height="128"/>
     </resources>
 </document>

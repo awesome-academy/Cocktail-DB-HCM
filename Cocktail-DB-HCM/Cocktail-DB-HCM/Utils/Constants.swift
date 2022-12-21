@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum CocktailCategory: String, CaseIterable {
     case popular = "popular"
@@ -30,6 +31,7 @@ enum CocktailCategory: String, CaseIterable {
 enum AppConstants {
     static let basePadding = 16.0
     static let zeroPadding = 0.0
+    static let baseCornerRadius = 10.0
 }
 
 enum HomeScreenConstants {
@@ -37,4 +39,10 @@ enum HomeScreenConstants {
     static let heightTableViewPosterCell = 350.0
     static let heightCollectionViewCell = 250.0
     static let heightCollectionViewPosterCell = 300.0
+}
+
+enum SearchScreenConstants {
+    static let heightTableViewCell = 200.0
+    static let cornerRadiusCellValue = 20.0
+    static let debounceTime = 1000
 }

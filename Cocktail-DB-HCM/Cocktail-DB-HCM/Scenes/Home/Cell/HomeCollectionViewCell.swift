@@ -25,9 +25,7 @@ final class HomeCollectionViewCell: UICollectionViewCell, NibReusable {
     
     private func setupView() {
         cocktailImageView.do {
-            $0.clipsToBounds = true
-            $0.layer.masksToBounds = true
-            $0.layer.cornerRadius = 10
+            $0.makeCornerRadius(AppConstants.baseCornerRadius)
         }
     }
 

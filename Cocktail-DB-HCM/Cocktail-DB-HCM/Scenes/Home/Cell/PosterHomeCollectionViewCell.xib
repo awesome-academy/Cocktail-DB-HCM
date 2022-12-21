@@ -36,15 +36,15 @@
                         <rect key="frame" x="120" y="16" width="30" height="30"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mgy-30-Jrw">
-                                <rect key="frame" x="2.6666666666666714" y="4.6666666666666661" width="25" height="22"/>
+                                <rect key="frame" x="5" y="6.9999999999999982" width="20" height="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Y80-dP-Dhd"/>
-                                    <constraint firstAttribute="width" constant="25" id="afC-c7-mUr"/>
+                                    <constraint firstAttribute="height" constant="20" id="Y80-dP-Dhd"/>
+                                    <constraint firstAttribute="width" constant="20" id="afC-c7-mUr"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3H7-0k-p9X">
-                                <rect key="frame" x="2.6666666666666714" y="2.6666666666666679" width="25" height="25"/>
+                                <rect key="frame" x="5" y="5" width="20" height="20"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                             </button>
@@ -104,6 +104,8 @@
                 <outlet property="cocktailGlassLabel" destination="Qvm-Wa-dYW" id="GsD-rr-57I"/>
                 <outlet property="cocktailImageView" destination="6CT-Tp-ffP" id="52Y-wb-mNc"/>
                 <outlet property="cocktailNameLabel" destination="Ylo-XM-efB" id="Lgt-Bk-3q6"/>
+                <outlet property="favoriteBackgroundView" destination="fey-Cj-6B9" id="L3Q-ft-ccJ"/>
+                <outlet property="favoriteImageView" destination="mgy-30-Jrw" id="2R6-tL-03v"/>
             </connections>
             <point key="canvasLocation" x="46.153846153846153" y="91.350710900473928"/>
         </collectionViewCell>

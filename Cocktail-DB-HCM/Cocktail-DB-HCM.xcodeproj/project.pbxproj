@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D43264D29529F28006FF926 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D43264C29529F28006FF926 /* UIView+.swift */; };
 		5D6F4733294832CC0030F90A /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F4732294832CC0030F90A /* AppNavigator.swift */; };
 		5D6F47352948331C0030F90A /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F47342948331C0030F90A /* AppViewModel.swift */; };
 		5D6F4737294833560030F90A /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F4736294833560030F90A /* ViewModelType.swift */; };
@@ -50,6 +51,8 @@
 		5D813F7E29470F0200E845A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D813F7C29470F0200E845A8 /* LaunchScreen.storyboard */; };
 		5DA655212950809900E43FBF /* PosterHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA6551F2950809900E43FBF /* PosterHomeCollectionViewCell.swift */; };
 		5DA655222950809900E43FBF /* PosterHomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DA655202950809900E43FBF /* PosterHomeCollectionViewCell.xib */; };
+		5DA65526295168AC00E43FBF /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA65524295168AC00E43FBF /* SearchTableViewCell.swift */; };
+		5DA65527295168AC00E43FBF /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DA65525295168AC00E43FBF /* SearchTableViewCell.xib */; };
 		5DA9E64B294DB9E200CC0FE1 /* CocktailSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9E64A294DB9E200CC0FE1 /* CocktailSectionModel.swift */; };
 		5DA9E655294DC13700CC0FE1 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9E654294DC13700CC0FE1 /* UIImageView+.swift */; };
 		5DA9E657294DC19200CC0FE1 /* CocktailURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9E656294DC19200CC0FE1 /* CocktailURLs.swift */; };
@@ -65,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		5B8DA09B3768D897CD7DB168 /* Pods_Cocktail_DB_HCM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cocktail_DB_HCM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D43264C29529F28006FF926 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		5D6F4732294832CC0030F90A /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		5D6F47342948331C0030F90A /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		5D6F4736294833560030F90A /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 		5D813F7F29470F0200E845A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DA6551F2950809900E43FBF /* PosterHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterHomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		5DA655202950809900E43FBF /* PosterHomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PosterHomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		5DA65524295168AC00E43FBF /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		5DA65525295168AC00E43FBF /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		5DA9E64A294DB9E200CC0FE1 /* CocktailSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailSectionModel.swift; sourceTree = "<group>"; };
 		5DA9E654294DC13700CC0FE1 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		5DA9E656294DC19200CC0FE1 /* CocktailURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailURLs.swift; sourceTree = "<group>"; };
@@ -244,6 +250,7 @@
 		5D6F472C294831A80030F90A /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				5DA655232951689B00E43FBF /* Cell */,
 				5D6F4753294835C60030F90A /* SearchAssembler.swift */,
 				5D6F4755294835D30030F90A /* SearchNavigator.swift */,
 				5D6F4757294835DB0030F90A /* SearchUseCase.swift */,
@@ -307,6 +314,7 @@
 			children = (
 				5D6F477D294846B10030F90A /* UIColor+.swift */,
 				5DA9E654294DC13700CC0FE1 /* UIImageView+.swift */,
+				5D43264C29529F28006FF926 /* UIView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -374,6 +382,15 @@
 				5D813F7F29470F0200E845A8 /* Info.plist */,
 			);
 			path = "Cocktail-DB-HCM";
+			sourceTree = "<group>";
+		};
+		5DA655232951689B00E43FBF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5DA65524295168AC00E43FBF /* SearchTableViewCell.swift */,
+				5DA65525295168AC00E43FBF /* SearchTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		5DA9E668294F152C00CC0FE1 /* Utils */ = {
@@ -458,6 +475,7 @@
 				5D813F7E29470F0200E845A8 /* LaunchScreen.storyboard in Resources */,
 				5D813F7B29470F0200E845A8 /* Assets.xcassets in Resources */,
 				5D6F476A2948364F0030F90A /* ShoppingViewController.xib in Resources */,
+				5DA65527295168AC00E43FBF /* SearchTableViewCell.xib in Resources */,
 				5D6F47762948369C0030F90A /* FavoriteViewController.xib in Resources */,
 				5DA9E667294F051500CC0FE1 /* HomeCollectionViewCell.xib in Resources */,
 				5D6F475E294835FB0030F90A /* SearchViewController.xib in Resources */,
@@ -538,6 +556,7 @@
 				5DA9E655294DC13700CC0FE1 /* UIImageView+.swift in Sources */,
 				5D6F474A294835840030F90A /* HomeNavigator.swift in Sources */,
 				5D6F4746294834270030F90A /* TabbarViewController.swift in Sources */,
+				5D43264D29529F28006FF926 /* UIView+.swift in Sources */,
 				5D6F47352948331C0030F90A /* AppViewModel.swift in Sources */,
 				5D6F4733294832CC0030F90A /* AppNavigator.swift in Sources */,
 				5DA9E64B294DB9E200CC0FE1 /* CocktailSectionModel.swift in Sources */,
@@ -569,6 +588,7 @@
 				5D6F4795294D97CC0030F90A /* Cocktail.swift in Sources */,
 				5D6F4758294835DB0030F90A /* SearchUseCase.swift in Sources */,
 				5DA655212950809900E43FBF /* PosterHomeCollectionViewCell.swift in Sources */,
+				5DA65526295168AC00E43FBF /* SearchTableViewCell.swift in Sources */,
 				5D6F4764294836360030F90A /* ShoppingUseCase.swift in Sources */,
 				5D6F474C294835900030F90A /* HomeUseCase.swift in Sources */,
 				5D6F4756294835D30030F90A /* SearchNavigator.swift in Sources */,

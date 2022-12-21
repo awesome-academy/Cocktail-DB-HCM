@@ -17,6 +17,8 @@ final class PosterHomeCollectionViewCell: UICollectionViewCell, NibReusable {
     @IBOutlet private weak var cocktailNameLabel: UILabel!
     @IBOutlet private weak var cocktailGlassLabel: UILabel!
     @IBOutlet private weak var cocktailImageView: UIImageView!
+    @IBOutlet private weak var favoriteBackgroundView: UIView!
+    @IBOutlet private weak var favoriteImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,9 +27,11 @@ final class PosterHomeCollectionViewCell: UICollectionViewCell, NibReusable {
     
     private func setupView() {
         cocktailImageView.do {
-            $0.clipsToBounds = true
-            $0.layer.masksToBounds = true
-            $0.layer.cornerRadius = 10
+            $0.makeCornerRadius(AppConstants.baseCornerRadius)
+        }
+        
+        favoriteBackgroundView.do {
+            $0.makeCornerRadius($0.bounds.size.width / 2)
         }
     }
     

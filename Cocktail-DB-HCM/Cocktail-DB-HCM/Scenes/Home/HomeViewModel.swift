@@ -18,6 +18,7 @@ struct HomeViewModel {
 extension HomeViewModel: ViewModelType {
     struct Input {
         let loadTrigger: Driver<Void>
+        let selectCocktailTrigger: Driver<Cocktail>
     }
     
     struct Output {
@@ -68,7 +69,11 @@ extension HomeViewModel: ViewModelType {
             }
             .asDriver(onErrorJustReturn: [])
         
+        let selectedCocktailId = input.selectCocktailTrigger
+            .do(onNext: navigator.toDetailScreen(cocktail:))
+            .map { _ in }
+        
         return Output(cocktails: cocktails,
-                      voidDrivers: [])
+                      voidDrivers: [selectedCocktailId])
     }
 }

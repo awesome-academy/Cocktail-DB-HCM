@@ -46,3 +46,18 @@ enum SearchScreenConstants {
     static let cornerRadiusCellValue = 20.0
     static let debounceTime = 1000
 }
+
+enum SimilarCellConstants {
+    static let heightCollectionViewCell = 250.0
+    static let widthCollectionViewCell = 300.0
+}
+
+enum IngredientCellConstants {
+    static let heightCollectionViewCell = 220.0
+    static let widthCollectionViewCell = 120.0
+}
+
+enum DetailTableViewCell {
+    static let similarRowHeight = 600.0
+    static let ingredientRowHeight = 245.0
+}

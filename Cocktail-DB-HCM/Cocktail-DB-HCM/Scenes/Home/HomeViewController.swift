@@ -18,8 +18,10 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     typealias DataSource = RxTableViewSectionedReloadDataSource<CocktailsSection>
+    
     var viewModel: HomeViewModel!
     var disposeBag = DisposeBag()
+    
     private var dataSource: DataSource!
     private let selectCocktailTrigger = PublishSubject<Cocktail>()
     private let selectCategoryTrigger = PublishSubject<CocktailCategory>()
@@ -86,7 +88,10 @@ extension HomeViewController {
 
 extension HomeViewController: Bindable {
     func bindViewModel() {
-        let input = HomeViewModel.Input(loadTrigger: Driver.just(()))
+        let input = HomeViewModel.Input(
+            loadTrigger: Driver.just(()),
+            selectCocktailTrigger: selectCocktailTrigger.asDriver(onErrorJustReturn: Cocktail())
+        )
         
         let output = viewModel.transform(input: input, disposeBag: disposeBag)
         dataSource = DataSource(configureCell: configureCell)

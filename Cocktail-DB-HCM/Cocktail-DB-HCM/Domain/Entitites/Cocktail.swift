@@ -14,6 +14,11 @@ struct CocktailSession {
     var cocktails = [Cocktail]()
 }
 
+struct SimilarCocktailSession {
+    var category = ""
+    var cocktails = [Cocktail]()
+}
+
 struct CocktailResponse: Mappable {
     var drinks: [Cocktail]?
     
@@ -25,7 +30,7 @@ struct CocktailResponse: Mappable {
 }
 
 struct Cocktail {
-    var id: Int
+    var id: String
     var strDrink: String
     var strCategory: String
     var strAlcoholic: String
@@ -36,7 +41,7 @@ struct Cocktail {
 
 extension Cocktail {
     init() {
-        self.init(id: 0,
+        self.init(id: "",
                   strDrink: "",
                   strCategory: "",
                   strAlcoholic: "",
@@ -52,7 +57,7 @@ extension Cocktail: Mappable {
     }
     
     mutating func mapping(map: Map) {
-        id <- map["id"]
+        id <- map["idDrink"]
         strDrink <- map["strDrink"]
         strCategory <- map["strCategory"]
         strAlcoholic <- map["strAlcoholic"]
@@ -60,4 +65,9 @@ extension Cocktail: Mappable {
         strInstructions <- map["strInstructions"]
         strDrinkThumb <- map["strDrinkThumb"]
     }
+}
+
+struct Ingredient {
+    var name = ""
+    var measure = ""
 }

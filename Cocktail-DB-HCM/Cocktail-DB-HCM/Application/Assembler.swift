@@ -13,7 +13,8 @@ protocol Assembler: AnyObject,
                     HomeAssembler,
                     SearchAssembler,
                     ShoppingAssembler,
-                    FavoriteAssembler {
+                    FavoriteAssembler,
+                    DetailAssembler {
 }
 
 final class DefaultAssembler: Assembler {

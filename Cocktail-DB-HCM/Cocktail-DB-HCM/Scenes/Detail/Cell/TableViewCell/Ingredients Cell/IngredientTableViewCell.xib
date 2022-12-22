@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="203" id="KGk-i7-Jjw" customClass="IngredientTableViewCell" customModule="Cocktail_DB_HCM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="203"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="352" height="203"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vo-Xb-f3S">
+                        <rect key="frame" x="16" y="16" width="99" height="21.666666666666671"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzN-dP-lTD">
+                        <rect key="frame" x="305" y="19.666666666666668" width="31" height="14.333333333333332"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nEQ-CQ-3ZR">
+                        <rect key="frame" x="16" y="45.666666666666657" width="320" height="180"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="180" id="pyt-EQ-4cA"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="47J-fN-3Ae">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="8Vo-Xb-f3S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="8Nf-vf-LEy"/>
+                    <constraint firstItem="nEQ-CQ-3ZR" firstAttribute="top" secondItem="8Vo-Xb-f3S" secondAttribute="bottom" constant="8" id="PQL-zi-gI6"/>
+                    <constraint firstItem="RzN-dP-lTD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8Vo-Xb-f3S" secondAttribute="trailing" constant="16" id="hhK-OF-UtB"/>
+                    <constraint firstItem="nEQ-CQ-3ZR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="kSM-he-wew"/>
+                    <constraint firstItem="RzN-dP-lTD" firstAttribute="centerY" secondItem="8Vo-Xb-f3S" secondAttribute="centerY" id="pMv-lN-kAI"/>
+                    <constraint firstItem="8Vo-Xb-f3S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="rtX-tV-ZZh"/>
+                    <constraint firstAttribute="trailing" secondItem="RzN-dP-lTD" secondAttribute="trailing" constant="16" id="rzP-cn-62F"/>
+                    <constraint firstAttribute="trailing" secondItem="nEQ-CQ-3ZR" secondAttribute="trailing" constant="16" id="tks-nA-Tha"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nEQ-CQ-3ZR" secondAttribute="bottom" constant="1" id="wzK-BG-VPp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="collectionView" destination="nEQ-CQ-3ZR" id="PIr-nh-XUu"/>
+                <outlet property="ingredientAmountLabel" destination="RzN-dP-lTD" id="LgK-LG-83f"/>
+                <outlet property="ingredientNameLabel" destination="RzN-dP-lTD" id="Svw-O6-AB0"/>
+            </connections>
+            <point key="canvasLocation" x="-1.5384615384615383" y="45.142180094786731"/>
+        </tableViewCell>
+    </objects>
+</document>

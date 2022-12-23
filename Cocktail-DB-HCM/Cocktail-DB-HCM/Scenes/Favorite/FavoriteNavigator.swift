@@ -9,6 +9,7 @@ import UIKit
 
 protocol FavoriteNavigatorType {
     func toMain()
+    func toDetailScreen(cocktail: Cocktail)
 }
 
 struct FavoriteNavigator: FavoriteNavigatorType {
@@ -16,6 +17,12 @@ struct FavoriteNavigator: FavoriteNavigatorType {
     unowned let navigationController: UINavigationController
 
     func toMain() {
+    }
+    
+    func toDetailScreen(cocktail: Cocktail) {
+        let detailNavController = UINavigationController()
+        let vc: DetailViewController = assembler.resolve(navigationController: detailNavController, cocktail: cocktail)
+        navigationController.pushViewController(vc, animated: true)
     }
 }
 

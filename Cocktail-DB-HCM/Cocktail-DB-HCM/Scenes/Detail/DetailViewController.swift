@@ -67,10 +67,10 @@ final class DetailViewController: UIViewController {
 
 extension DetailViewController: Bindable {
     func bindViewModel() {
-        let input = DetailViewModel.Input(loadTrigger: loadTrigger
-                                                    .asDriver(onErrorJustReturn: ()),
-                                                selectedSimilarTrigger: similarCocktail
-                                                    .asDriver(onErrorJustReturn: Cocktail()))
+        let input = DetailViewModel.Input(
+            loadTrigger: loadTrigger.asDriver(onErrorJustReturn: ()),
+            selectedSimilarTrigger: similarCocktail.asDriver(onErrorJustReturn: Cocktail()),
+            likeTrigger: likeButtonTrigger.asDriver(onErrorJustReturn: false))
         let output = viewModel.transform(input)
         
         output.title

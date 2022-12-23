@@ -18,7 +18,7 @@ extension FavoriteAssembler {
     func resolve(navigationController: UINavigationController) -> FavoriteViewController {
         let viewController = FavoriteViewController()
         let viewModel: FavoriteViewModel = resolve(navigationController: navigationController)
-        viewController.bindViewModel(to: viewModel)
+        viewController.viewModel = viewModel
         return viewController
     }
 
@@ -36,6 +36,6 @@ extension FavoriteAssembler where Self: DefaultAssembler {
     }
 
     func resolve() -> FavoriteUseCaseType {
-        return FavoriteUseCase()
+        return FavoriteUseCase(favoritesRepository: FavoritesRepository())
     }
 }

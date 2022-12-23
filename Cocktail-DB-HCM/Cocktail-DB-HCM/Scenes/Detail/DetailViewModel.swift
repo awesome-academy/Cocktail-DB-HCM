@@ -19,6 +19,7 @@ struct DetailViewModel {
     struct Input {
         let loadTrigger: Driver<Void>
         let selectedSimilarTrigger: Driver<Cocktail>
+        let likeTrigger: Driver<Bool>
     }
     
     struct Output {
@@ -35,12 +36,32 @@ struct DetailViewModel {
         let title = input.loadTrigger
             .map { cocktail.strDrink }
         
+        let checkLiked = input.loadTrigger
+            .flatMapLatest { _ in
+                return useCase.checkLikedStatus(cocktailId: cocktail.id)
+                    .asDriver(onErrorJustReturn: false)
+            }
+            .do(onNext: likedStatus.accept(_:))
+            .map { _ in }
+        
+        let liked = input.likeTrigger
+            .flatMapLatest { isLiked -> Driver<Bool> in
+                if isLiked {
+                    return useCase.deleteMovie(cocktailId: cocktail.id)
+                        .asDriver(onErrorJustReturn: true)
+                } else {
+                    return useCase.addMovie(cocktail: cocktail)
+                        .asDriver(onErrorJustReturn: false)
+                }
+            }
+            .do(onNext: likedStatus.accept(_:))
+            .map { _ in }
+        
         let detail = input.loadTrigger
             .flatMapLatest { _ in
                 return useCase.getCocktailDetail(cocktailId: cocktail.id)
                     .asDriver(onErrorJustReturn: CocktailDetail())
             }
-        print("CocktailID: \(cocktail)")
         
         let similar = input.loadTrigger
             .flatMapLatest { _ in
@@ -66,10 +87,12 @@ struct DetailViewModel {
         let selectedSimilar = input.selectedSimilarTrigger
             .do(onNext: navigator.toDetail(detail:))
             .map { _ in }
+        
+        let voidDrivers = [liked, checkLiked]
 
         return Output(title: title,
                       detailAndFavoriteStatus: detailsAndLiked,
                       selectedSimilar: selectedSimilar,
-                      voidDrivers: [])
+                      voidDrivers: voidDrivers)
     }
 }

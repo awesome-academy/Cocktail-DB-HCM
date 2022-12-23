@@ -81,6 +81,13 @@
 		5DA9E666294F051500CC0FE1 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9E664294F051500CC0FE1 /* HomeCollectionViewCell.swift */; };
 		5DA9E667294F051500CC0FE1 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DA9E665294F051500CC0FE1 /* HomeCollectionViewCell.xib */; };
 		5DA9E66A294F153900CC0FE1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9E669294F153900CC0FE1 /* Constants.swift */; };
+		5DBEA8592953F0EB00F03D02 /* FavoritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA8582953F0EB00F03D02 /* FavoritesRepository.swift */; };
+		5DBEA85C2953F61600F03D02 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA85B2953F61600F03D02 /* DataBaseManager.swift */; };
+		5DBEA85F2953F77A00F03D02 /* CocktailDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA85D2953F77A00F03D02 /* CocktailDatabase.xcdatamodeld */; };
+		5DBEA86F2954044900F03D02 /* CocktailEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA86D2954044900F03D02 /* CocktailEntity+CoreDataProperties.swift */; };
+		5DBEA8702954044900F03D02 /* CocktailEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA86E2954044900F03D02 /* CocktailEntity+CoreDataClass.swift */; };
+		5DBEA8782954148500F03D02 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA8762954148500F03D02 /* FavoriteCollectionViewCell.swift */; };
+		5DBEA8792954148500F03D02 /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DBEA8772954148500F03D02 /* FavoriteCollectionViewCell.xib */; };
 		F1110E906AA76509A3670BB4 /* Pods_Cocktail_DB_HCM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8DA09B3768D897CD7DB168 /* Pods_Cocktail_DB_HCM.framework */; };
 /* End PBXBuildFile section */
 
@@ -162,6 +169,13 @@
 		5DA9E664294F051500CC0FE1 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		5DA9E665294F051500CC0FE1 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		5DA9E669294F153900CC0FE1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5DBEA8582953F0EB00F03D02 /* FavoritesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRepository.swift; sourceTree = "<group>"; };
+		5DBEA85B2953F61600F03D02 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		5DBEA85E2953F77A00F03D02 /* CocktailDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CocktailDatabase.xcdatamodel; sourceTree = "<group>"; };
+		5DBEA86D2954044900F03D02 /* CocktailEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CocktailEntity+CoreDataProperties.swift"; path = "/Users/le.n.t.trung/Documents/Cocktail-DB-HCM/Cocktail-DB-HCM/Cocktail-DB-HCM/Platform/DataBaseManager/CocktailEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		5DBEA86E2954044900F03D02 /* CocktailEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CocktailEntity+CoreDataClass.swift"; path = "/Users/le.n.t.trung/Documents/Cocktail-DB-HCM/Cocktail-DB-HCM/Cocktail-DB-HCM/Platform/DataBaseManager/CocktailEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		5DBEA8762954148500F03D02 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		5DBEA8772954148500F03D02 /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
 		9DAC7CED95387B263F3839E6 /* Pods-Cocktail-DB-HCM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cocktail-DB-HCM.release.xcconfig"; path = "Target Support Files/Pods-Cocktail-DB-HCM/Pods-Cocktail-DB-HCM.release.xcconfig"; sourceTree = "<group>"; };
 		FDCCEBC7EDF3037D84D977E3 /* Pods-Cocktail-DB-HCM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cocktail-DB-HCM.debug.xcconfig"; path = "Target Support Files/Pods-Cocktail-DB-HCM/Pods-Cocktail-DB-HCM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -331,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				5D6F4796294DA4170030F90A /* CocktailRepository.swift */,
+				5DBEA8582953F0EB00F03D02 /* FavoritesRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -387,6 +402,7 @@
 		5D6F472E294831C50030F90A /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				5DBEA871295412C400F03D02 /* Cell */,
 				5D6F476B294836620030F90A /* FavoriteAssembler.swift */,
 				5D6F476D2948366E0030F90A /* FavoriteNavigator.swift */,
 				5D6F476F294836830030F90A /* FavoriteUseCase.swift */,
@@ -445,6 +461,7 @@
 		5D6F4798294DA4B80030F90A /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				5DBEA85A2953F5EB00F03D02 /* DataBaseManager */,
 				5D6F4799294DA4C10030F90A /* Services */,
 			);
 			path = Platform;
@@ -509,6 +526,26 @@
 				5DA9E669294F153900CC0FE1 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		5DBEA85A2953F5EB00F03D02 /* DataBaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				5DBEA86E2954044900F03D02 /* CocktailEntity+CoreDataClass.swift */,
+				5DBEA86D2954044900F03D02 /* CocktailEntity+CoreDataProperties.swift */,
+				5DBEA85B2953F61600F03D02 /* DataBaseManager.swift */,
+				5DBEA85D2953F77A00F03D02 /* CocktailDatabase.xcdatamodeld */,
+			);
+			path = DataBaseManager;
+			sourceTree = "<group>";
+		};
+		5DBEA871295412C400F03D02 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5DBEA8762954148500F03D02 /* FavoriteCollectionViewCell.swift */,
+				5DBEA8772954148500F03D02 /* FavoriteCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		D90DCFB51869907B08CEE454 /* Frameworks */ = {
@@ -596,6 +633,7 @@
 				5DA9E667294F051500CC0FE1 /* HomeCollectionViewCell.xib in Resources */,
 				5D6F475E294835FB0030F90A /* SearchViewController.xib in Resources */,
 				5DA9E661294EDAEE00CC0FE1 /* HomeTableViewCell.xib in Resources */,
+				5DBEA8792954148500F03D02 /* FavoriteCollectionViewCell.xib in Resources */,
 				5D6F4752294835B10030F90A /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -670,10 +708,12 @@
 				5D4326882952AEB5006FF926 /* CocktailDetail.swift in Sources */,
 				5D6F474E2948359E0030F90A /* HomeViewModel.swift in Sources */,
 				5D6F4751294835B10030F90A /* HomeViewController.swift in Sources */,
+				5DBEA8782954148500F03D02 /* FavoriteCollectionViewCell.swift in Sources */,
 				5D6F4748294835790030F90A /* HomeAssembler.swift in Sources */,
 				5DA9E655294DC13700CC0FE1 /* UIImageView+.swift in Sources */,
 				5D6F474A294835840030F90A /* HomeNavigator.swift in Sources */,
 				5D6F4746294834270030F90A /* TabbarViewController.swift in Sources */,
+				5DBEA85F2953F77A00F03D02 /* CocktailDatabase.xcdatamodeld in Sources */,
 				5D43264D29529F28006FF926 /* UIView+.swift in Sources */,
 				5D6F47352948331C0030F90A /* AppViewModel.swift in Sources */,
 				5D43269D2952D41F006FF926 /* IngredientTableViewCell.swift in Sources */,
@@ -699,11 +739,14 @@
 				5D6F475A294835EB0030F90A /* SearchViewModel.swift in Sources */,
 				5D813F7229470F0100E845A8 /* AppDelegate.swift in Sources */,
 				5D6F47722948368F0030F90A /* FavoriteViewModel.swift in Sources */,
+				5DBEA8702954044900F03D02 /* CocktailEntity+CoreDataClass.swift in Sources */,
 				5D4326832952A513006FF926 /* DetailViewController.swift in Sources */,
 				5D43267C2952A4AD006FF926 /* DetailUseCase.swift in Sources */,
 				5D6F4754294835C60030F90A /* SearchAssembler.swift in Sources */,
 				5D6F475D294835FB0030F90A /* SearchViewController.swift in Sources */,
+				5DBEA8592953F0EB00F03D02 /* FavoritesRepository.swift in Sources */,
 				5D6F473C294833E80030F90A /* TabbarAssembler.swift in Sources */,
+				5DBEA86F2954044900F03D02 /* CocktailEntity+CoreDataProperties.swift in Sources */,
 				5D4326802952A4D7006FF926 /* DetailSectionModel.swift in Sources */,
 				5DA9E657294DC19200CC0FE1 /* CocktailURLs.swift in Sources */,
 				5D6F4762294836290030F90A /* ShoppingNavigator.swift in Sources */,
@@ -712,6 +755,7 @@
 				5D6F4737294833560030F90A /* ViewModelType.swift in Sources */,
 				5DA9E659294DC95500CC0FE1 /* Assembler.swift in Sources */,
 				5DA9E666294F051500CC0FE1 /* HomeCollectionViewCell.swift in Sources */,
+				5DBEA85C2953F61600F03D02 /* DataBaseManager.swift in Sources */,
 				5D6F4795294D97CC0030F90A /* Cocktail.swift in Sources */,
 				5D6F4758294835DB0030F90A /* SearchUseCase.swift in Sources */,
 				5DA655212950809900E43FBF /* PosterHomeCollectionViewCell.swift in Sources */,
@@ -943,6 +987,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5DBEA85D2953F77A00F03D02 /* CocktailDatabase.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5DBEA85E2953F77A00F03D02 /* CocktailDatabase.xcdatamodel */,
+			);
+			currentVersion = 5DBEA85E2953F77A00F03D02 /* CocktailDatabase.xcdatamodel */;
+			path = CocktailDatabase.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5D813F6629470F0100E845A8 /* Project object */;
 }

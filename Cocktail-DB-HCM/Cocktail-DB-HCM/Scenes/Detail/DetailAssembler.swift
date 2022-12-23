@@ -36,6 +36,6 @@ extension DetailAssembler where Self: DefaultAssembler {
     }
 
     func resolve() -> DetailUseCaseType {
-        return DetailUseCase(cocktailRepository: CocktailRepository())
+        return DetailUseCase(cocktailRepository: CocktailRepository(), favoritesRepository: FavoritesRepository())
     }
 }

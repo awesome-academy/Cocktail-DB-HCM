@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/le.n.t.trung/Documents/Cocktail-DB-HCM/Cocktail-DB-HCM/Cocktail-DB-HCM/Platform/DataBaseManager/CocktailEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/le.n.t.trung/Documents/Cocktail-DB-HCM/Cocktail-DB-HCM/Cocktail-DB-HCM/Platform/DataBaseManager/CocktailEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Cocktail-DB-HCM.xcodeproj">
    </FileRef>
    <FileRef

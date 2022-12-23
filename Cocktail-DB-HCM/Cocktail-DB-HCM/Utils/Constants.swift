@@ -61,3 +61,15 @@ enum DetailTableViewCell {
     static let similarRowHeight = 600.0
     static let ingredientRowHeight = 245.0
 }
+
+enum DatabaseError: Error {
+    case addCocktailFailed
+    case deleteCocktailFailed
+    case checkCocktailExistFailed
+    case getAllCocktailFailed
+}
+
+enum FavoriteCollectionCell {
+    static let spacing = 16
+    static let heightCollectionViewCell = 250.0
+}

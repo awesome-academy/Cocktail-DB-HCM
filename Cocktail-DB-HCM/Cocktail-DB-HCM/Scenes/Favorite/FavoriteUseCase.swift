@@ -6,9 +6,22 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol FavoriteUseCaseType {
+    func getFavoriteCocktails() -> Observable<[Cocktail]>
+    func deleteFavoriteCocktailAt(cocktailId: String) -> Observable<[Cocktail]>
 }
 
 struct FavoriteUseCase: FavoriteUseCaseType {
+    let favoritesRepository: FavoritesRepositoryType
+    
+    func getFavoriteCocktails() -> Observable<[Cocktail]> {
+        return favoritesRepository.fetchAllFavoriteCocktail()
+    }
+    
+    func deleteFavoriteCocktailAt(cocktailId: String) -> Observable<[Cocktail]> {
+        return favoritesRepository.deleteCocktail(cocktailId: cocktailId)
+    }
 }

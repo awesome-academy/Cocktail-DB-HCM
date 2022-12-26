@@ -12,14 +12,18 @@ protocol DetailUseCaseType {
     func getListCocktails(category: String) -> Observable<[Cocktail]>
     func getCocktailDetail(cocktailId: String) -> Observable<CocktailDetail>
     func checkLikedStatus(cocktailId: String) -> Observable<Bool>
-    func addMovie(cocktail: Cocktail) -> Observable<Bool>
-    func deleteMovie(cocktailId: String) -> Observable<Bool>
+    func addFavoriteCocktail(cocktail: Cocktail) -> Observable<Bool>
+    func deleteFavoriteCocktail(cocktailId: String) -> Observable<Bool>
+    func checkShoppingStatus(cocktailId: String) -> Observable<Bool>
+    func addShoppingCocktail(cocktail: Cocktail) -> Observable<Bool>
+    func deleteShoppingCocktail(cocktailId: String) -> Observable<Bool>
 }
 
 struct DetailUseCase: DetailUseCaseType {
     
     let cocktailRepository: CocktailRepositoryType
     let favoritesRepository: FavoritesRepositoryType
+    let shoppingRepository: ShoppingRepositoryType
     
     func getListCocktails(category: String) -> Observable<[Cocktail]> {
         return cocktailRepository.getFilterCocktailsByCategory(category: category)
@@ -33,11 +37,23 @@ struct DetailUseCase: DetailUseCaseType {
         favoritesRepository.checkForExist(cocktailId: cocktailId)
     }
     
-    func addMovie(cocktail: Cocktail) -> Observable<Bool> {
+    func addFavoriteCocktail(cocktail: Cocktail) -> Observable<Bool> {
         favoritesRepository.addNewFavoriteCocktail(cocktail: cocktail)
     }
     
-    func deleteMovie(cocktailId: String) -> Observable<Bool> {
-        favoritesRepository.deleteMovieAt(cocktailId: cocktailId)
+    func deleteFavoriteCocktail(cocktailId: String) -> Observable<Bool> {
+        favoritesRepository.deleteCocktailAt(cocktailId: cocktailId)
+    }
+    
+    func checkShoppingStatus(cocktailId: String) -> Observable<Bool> {
+        shoppingRepository.checkForExist(cocktailId: cocktailId)
+    }
+    
+    func addShoppingCocktail(cocktail: Cocktail) -> Observable<Bool> {
+        shoppingRepository.addNewShoppingCocktail(cocktail: cocktail)
+    }
+    
+    func deleteShoppingCocktail(cocktailId: String) -> Observable<Bool> {
+        shoppingRepository.deleteCocktailAt(cocktailId: cocktailId)
     }
 }

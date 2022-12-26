@@ -17,7 +17,9 @@ protocol DetailAssembler {
 extension DetailAssembler {
     func resolve(navigationController: UINavigationController, cocktail: Cocktail) -> DetailViewController {
         let viewController = DetailViewController()
-        let viewModel: DetailViewModel = resolve(navigationController: navigationController, cocktail: cocktail)
+        let viewModel: DetailViewModel = resolve(
+            navigationController: navigationController,
+            cocktail: cocktail)
         viewController.viewModel = viewModel
         return viewController
     }
@@ -36,6 +38,9 @@ extension DetailAssembler where Self: DefaultAssembler {
     }
 
     func resolve() -> DetailUseCaseType {
-        return DetailUseCase(cocktailRepository: CocktailRepository(), favoritesRepository: FavoritesRepository())
+        return DetailUseCase(
+            cocktailRepository: CocktailRepository(),
+            favoritesRepository: FavoritesRepository(),
+            shoppingRepository: ShoppingRepository())
     }
 }

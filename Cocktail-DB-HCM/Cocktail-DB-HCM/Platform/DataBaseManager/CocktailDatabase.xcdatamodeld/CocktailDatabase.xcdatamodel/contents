@@ -9,4 +9,12 @@
         <attribute name="strGlass" optional="YES" attributeType="String"/>
         <attribute name="strInstructions" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="ShoppingCocktailEntity" representedClassName=".ShoppingCocktailEntity" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="ingredients" optional="YES" attributeType="Transformable"/>
+        <attribute name="instructions" optional="YES" attributeType="String"/>
+        <attribute name="measures" optional="YES" attributeType="Transformable"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="thumb" optional="YES" attributeType="String"/>
+    </entity>
 </model>

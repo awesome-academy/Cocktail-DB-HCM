@@ -20,6 +20,7 @@ struct DetailViewModel {
         let loadTrigger: Driver<Void>
         let selectedSimilarTrigger: Driver<Cocktail>
         let likeTrigger: Driver<Bool>
+        let shoppingTrigger: Driver<Bool>
     }
     
     struct Output {
@@ -32,6 +33,7 @@ struct DetailViewModel {
     func transform(_ input: Input) -> Output {
         
         let likedStatus = BehaviorRelay<Bool>(value: false)
+        let shoppingStatus = BehaviorRelay<Bool>(value: false)
         
         let title = input.loadTrigger
             .map { cocktail.strDrink }
@@ -47,14 +49,37 @@ struct DetailViewModel {
         let liked = input.likeTrigger
             .flatMapLatest { isLiked -> Driver<Bool> in
                 if isLiked {
-                    return useCase.deleteMovie(cocktailId: cocktail.id)
-                        .asDriver(onErrorJustReturn: true)
+                    return useCase.deleteFavoriteCocktail(cocktailId: cocktail.id)
+                        .asDriver(onErrorJustReturn: false)
+                        .map { !$0 }
                 } else {
-                    return useCase.addMovie(cocktail: cocktail)
+                    return useCase.addFavoriteCocktail(cocktail: cocktail)
                         .asDriver(onErrorJustReturn: false)
                 }
             }
             .do(onNext: likedStatus.accept(_:))
+            .map { _ in }
+        
+        let checkShopping = input.loadTrigger
+            .flatMapLatest { _ in
+                return useCase.checkShoppingStatus(cocktailId: cocktail.id)
+                    .asDriver(onErrorJustReturn: false)
+            }
+            .do(onNext: shoppingStatus.accept(_:))
+            .map { _ in }
+        
+        let shopping = input.shoppingTrigger
+            .flatMapLatest { isShopping -> Driver<Bool> in
+                if isShopping {
+                    return useCase.deleteShoppingCocktail(cocktailId: cocktail.id)
+                        .asDriver(onErrorJustReturn: false)
+                        .map { !$0 }
+                } else {
+                    return useCase.addShoppingCocktail(cocktail: cocktail)
+                        .asDriver(onErrorJustReturn: false)
+                }
+            }
+            .do(onNext: shoppingStatus.accept(_:))
             .map { _ in }
         
         let detail = input.loadTrigger
@@ -72,11 +97,12 @@ struct DetailViewModel {
                     }
             }
 
-        let detailsAndLiked = Driver.combineLatest(detail, likedStatus.asDriver(), similar)
-            .map { cocktailDetail, isLiked, similar -> [DetailsSectionModel] in
+        let detailsAndLiked = Driver.combineLatest(detail, likedStatus.asDriver(), shoppingStatus.asDriver(), similar)
+            .map { cocktailDetail, isLiked, isShopping, similar -> [DetailsSectionModel] in
                 return [.detail(items: [
                     .info(model: cocktailDetail,
-                          likedStatus: isLiked),
+                          likedStatus: isLiked,
+                          shoppingStatus: isShopping),
                     .description(model: cocktailDetail.instruction),
                     .ingredient(model: cocktailDetail.ingredients),
                     .similar(model: similar.cocktails)
@@ -88,7 +114,7 @@ struct DetailViewModel {
             .do(onNext: navigator.toDetail(detail:))
             .map { _ in }
         
-        let voidDrivers = [liked, checkLiked]
+        let voidDrivers = [liked, checkLiked, checkShopping, shopping]
 
         return Output(title: title,
                       detailAndFavoriteStatus: detailsAndLiked,

@@ -21,16 +21,22 @@ final class InfoTableViewCell: UITableViewCell, NibReusable {
     @IBOutlet private weak var favoriteBackgroundView: UIView!
     @IBOutlet private weak var favoriteImageView: UIImageView!
     @IBOutlet private weak var infoBackgroundView: UIView!
+    @IBOutlet private weak var addToShoppingButton: UIButton!
+    @IBOutlet private weak var favoriteButton: UIButton!
+    @IBOutlet private weak var backButton: UIButton!
     
     var favortieButtonTapped: ((Bool) -> Void)?
     var backButtonTapped: (() -> Void)?
+    var shoppingButtonTapped: ((Bool) -> Void)?
     
     private var isLiked = false
+    private var isShopping = false
     private var key: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         configureView()
+        configureButtonTap()
     }
     
     private func configureView() {
@@ -46,29 +52,52 @@ final class InfoTableViewCell: UITableViewCell, NibReusable {
         infoBackgroundView.do {
             $0.makeCornerRadius(AppConstants.baseCornerRadius * 3)
         }
+        
+        addToShoppingButton.do {
+            $0.makeCornerRadius(AppConstants.baseCornerRadius)
+        }
+    }
+    
+    private func configureButtonTap() {
+        addToShoppingButton.rx.tap.asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.shoppingButtonTapped?(self.isShopping)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        favoriteButton.rx.tap.asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.favortieButtonTapped?(self.isLiked)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        backButton.rx.tap.asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.backButtonTapped?()
+            })
+            .disposed(by: rx.disposeBag)
+    }
+    
+    private func configureAddShoppingButton(isExistInShoppingList: Bool) {
+        addToShoppingButton.isHidden = isExistInShoppingList
     }
     
     private func configureLikeButton(isLiked: Bool) {
-        favoriteImageView.image = isLiked
-        ? UIImage(systemName: "heart.fill")
-        : UIImage(systemName: "heart")
+        favoriteImageView.image = UIImage(systemName: isLiked ? "heart.fill" :  "heart")
     }
     
-    @IBAction func didTapBackButton(_ sender: Any) {
-        backButtonTapped?()
-    }
-    
-    @IBAction func didTapFavoriteButton(_ sender: Any) {
-        favortieButtonTapped?(isLiked)
-    }
-    
-    func configureCell(cocktail: CocktailDetail, likedStatus: Bool) {
-        isLiked = likedStatus
+    func configureCell(cocktail: CocktailDetail, isLiked: Bool, isShopping: Bool) {
+        self.isLiked = isLiked
+        self.isShopping = isShopping
         cocktailImageView.loadImageWithUrl(path: cocktail.drinkThumb)
         cocktailNameLabel.text = cocktail.title
         cocktailAlcoholicLabel.text = cocktail.alcoholic
         cocktailGlassLabel.text = cocktail.glass
         cocktailCategoryLabel.text = cocktail.category
         configureLikeButton(isLiked: isLiked)
+        configureAddShoppingButton(isExistInShoppingList: isShopping)
     }
 }

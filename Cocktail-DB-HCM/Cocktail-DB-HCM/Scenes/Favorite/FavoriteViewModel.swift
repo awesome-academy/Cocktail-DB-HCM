@@ -20,12 +20,14 @@ extension FavoriteViewModel: ViewModelType {
 
     struct Input {
         let loadTrigger: Driver<Void>
+        let reloadTrigger: Driver<Void>
         let selectTrigger: Driver<IndexPath>
         let deleteTrigger: Driver<Cocktail>
     }
     
     struct Output {
         let loadData: Driver<Void>
+        let reloadData: Driver<Void>
         let cocktail: Driver<[Cocktail]>
         let selected: Driver<Void>
         let deleted: Driver<[Cocktail]>
@@ -34,6 +36,14 @@ extension FavoriteViewModel: ViewModelType {
     func transform(input: Input, disposeBag: RxSwift.DisposeBag) -> Output {
         
         let loadData = input.loadTrigger
+            .flatMapLatest { _ in
+                return self.useCase.getFavoriteCocktails()
+                    .asDriver(onErrorJustReturn: [])
+            }
+            .do(onNext: dataSource.accept(_:))
+            .map { _ in }
+        
+        let reloadData = input.reloadTrigger
             .flatMapLatest { _ in
                 return self.useCase.getFavoriteCocktails()
                     .asDriver(onErrorJustReturn: [])
@@ -56,6 +66,7 @@ extension FavoriteViewModel: ViewModelType {
             .do(onNext: dataSource.accept(_:))
     
         return Output(loadData: loadData,
+                      reloadData: reloadData,
                       cocktail: dataSource.asDriver(),
                       selected: selected,
                       deleted: deleted)

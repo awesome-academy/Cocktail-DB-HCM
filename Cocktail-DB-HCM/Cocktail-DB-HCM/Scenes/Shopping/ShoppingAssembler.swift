@@ -18,7 +18,7 @@ extension ShoppingAssembler {
     func resolve(navigationController: UINavigationController) -> ShoppingViewController {
         let viewController = ShoppingViewController()
         let viewModel: ShoppingViewModel = resolve(navigationController: navigationController)
-        viewController.bindViewModel(to: viewModel)
+        viewController.viewModel = viewModel
         return viewController
     }
 
@@ -36,6 +36,6 @@ extension ShoppingAssembler where Self: DefaultAssembler {
     }
 
     func resolve() -> ShoppingUseCaseType {
-        return ShoppingUseCase()
+        return ShoppingUseCase(shoppingRepository: ShoppingRepository())
     }
 }

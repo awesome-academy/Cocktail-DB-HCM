@@ -23,6 +23,7 @@ final class DetailViewController: UIViewController {
     private let similarCocktail = PublishSubject<Cocktail>()
     private let likeButtonTrigger = PublishSubject<Bool>()
     private let loadTrigger = BehaviorSubject<Void>(value: ())
+    private let shoppingButtonTrigger = PublishSubject<Bool>()
     
     private var dataSource: DataSource!
     
@@ -70,7 +71,8 @@ extension DetailViewController: Bindable {
         let input = DetailViewModel.Input(
             loadTrigger: loadTrigger.asDriver(onErrorJustReturn: ()),
             selectedSimilarTrigger: similarCocktail.asDriver(onErrorJustReturn: Cocktail()),
-            likeTrigger: likeButtonTrigger.asDriver(onErrorJustReturn: false))
+            likeTrigger: likeButtonTrigger.asDriver(onErrorJustReturn: false),
+            shoppingTrigger: shoppingButtonTrigger.asDriver(onErrorJustReturn: false))
         let output = viewModel.transform(input)
         
         output.title
@@ -111,12 +113,15 @@ extension DetailViewController {
     private var configureCell: DataSource.ConfigureCell {
         return { [weak self] (dataSource, tableView, indexPath, _) in
             switch dataSource[indexPath] {
-            case .info(let model, let likedStatus):
+            case .info(let model, let isLiked, let isShopping):
                 let cell = tableView.dequeueReusableCell(for: indexPath,
                                                          cellType: InfoTableViewCell.self)
-                cell.backButtonTapped = { self?.navigationController?.popViewController(animated: true) }
-                cell.favortieButtonTapped = { self?.likeButtonTrigger.onNext($0) }
-                cell.configureCell(cocktail: model, likedStatus: likedStatus)
+                cell.do {
+                    $0.shoppingButtonTapped = { self?.shoppingButtonTrigger.onNext($0) }
+                    $0.backButtonTapped = { self?.navigationController?.popViewController(animated: true) }
+                    $0.favortieButtonTapped = { self?.likeButtonTrigger.onNext($0) }
+                    $0.configureCell(cocktail: model, isLiked: isLiked, isShopping: isShopping)
+                }
                 return cell
             case .description(let model):
                 let cell = tableView.dequeueReusableCell(for: indexPath,

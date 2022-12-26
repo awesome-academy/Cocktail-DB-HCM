@@ -16,7 +16,7 @@ enum DetailsSectionModel {
 }
 
 enum SectionItems {
-    case info(model: CocktailDetail, likedStatus: Bool)
+    case info(model: CocktailDetail, likedStatus: Bool, shoppingStatus: Bool)
     case description(model: String)
     case ingredient(model: [Ingredient])
     case similar(model: [Cocktail])

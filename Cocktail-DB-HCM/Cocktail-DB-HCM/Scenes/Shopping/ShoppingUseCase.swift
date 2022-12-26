@@ -6,9 +6,23 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol ShoppingUseCaseType {
+    func getShoppingCocktails() -> Observable<[Cocktail]>
+    func deleteShoppingCocktailAt(cocktailId: String) -> Observable<[Cocktail]>
 }
 
 struct ShoppingUseCase: ShoppingUseCaseType {
+    let shoppingRepository: ShoppingRepository
+    
+    func getShoppingCocktails() -> Observable<[Cocktail]> {
+        return shoppingRepository.fetchAllShoppingCocktail()
+    }
+    
+    func deleteShoppingCocktailAt(cocktailId: String) -> Observable<[Cocktail]> {
+        return shoppingRepository.deleteCocktail(cocktailId: cocktailId)
+    }
+
 }

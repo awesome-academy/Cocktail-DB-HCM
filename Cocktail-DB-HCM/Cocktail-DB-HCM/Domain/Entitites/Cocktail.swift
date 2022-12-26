@@ -37,6 +37,7 @@ struct Cocktail {
     var strGlass: String
     var strInstructions: String
     var strDrinkThumb: String
+    var ingredients: [Ingredient]
 }
 
 extension Cocktail {
@@ -47,7 +48,8 @@ extension Cocktail {
                   strAlcoholic: "",
                   strGlass: "",
                   strInstructions: "",
-                  strDrinkThumb: "")
+                  strDrinkThumb: "",
+                  ingredients: [])
     }
 }
 
@@ -64,6 +66,21 @@ extension Cocktail: Mappable {
         strGlass <- map["strGlass"]
         strInstructions <- map["strInstructions"]
         strDrinkThumb <- map["strDrinkThumb"]
+        var flag = true
+        var index = 1
+        while flag {
+            var tempName: String?
+            var tempMeasure: String?
+            tempName <- map["strIngredient\(index)"]
+            tempMeasure <- map["strMeasure\(index)"]
+            if let tempName = tempName, let tempMeasure = tempMeasure {
+                let tempIngredient = Ingredient(name: tempName, measure: tempMeasure)
+                ingredients.append(tempIngredient)
+                index += 1
+            } else {
+                flag = false
+            }
+        }
     }
 }
 

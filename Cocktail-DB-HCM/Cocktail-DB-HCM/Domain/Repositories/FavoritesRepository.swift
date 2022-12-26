@@ -15,7 +15,7 @@ protocol FavoritesRepositoryType {
     func fetchAllFavoriteCocktail() -> Observable<[Cocktail]>
     func checkForExist(cocktailId: String) -> Observable<Bool>
     func deleteCocktail(cocktailId: String) -> Observable<[Cocktail]>
-    func deleteMovieAt(cocktailId: String) -> Observable<Bool>
+    func deleteCocktailAt(cocktailId: String) -> Observable<Bool>
 }
 
 struct FavoritesRepository: FavoritesRepositoryType {
@@ -36,7 +36,7 @@ struct FavoritesRepository: FavoritesRepositoryType {
         return DatabaseManager.shared.deleteCocktail(cocktailId: cocktailId)
     }
     
-    func deleteMovieAt(cocktailId: String) -> Observable<Bool> {
+    func deleteCocktailAt(cocktailId: String) -> Observable<Bool> {
         return DatabaseManager.shared.deleteCocktailAt(cocktailId: cocktailId)
     }
 }

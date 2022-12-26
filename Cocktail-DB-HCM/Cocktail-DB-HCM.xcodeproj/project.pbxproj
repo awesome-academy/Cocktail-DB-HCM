@@ -88,6 +88,11 @@
 		5DBEA8702954044900F03D02 /* CocktailEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA86E2954044900F03D02 /* CocktailEntity+CoreDataClass.swift */; };
 		5DBEA8782954148500F03D02 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA8762954148500F03D02 /* FavoriteCollectionViewCell.swift */; };
 		5DBEA8792954148500F03D02 /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DBEA8772954148500F03D02 /* FavoriteCollectionViewCell.xib */; };
+		5DBEA87D29555AE100F03D02 /* ShoppingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA87C29555AE100F03D02 /* ShoppingRepository.swift */; };
+		5DBEA88029555FB800F03D02 /* ShoppingCocktailEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA87F29555FB800F03D02 /* ShoppingCocktailEntity+CoreDataProperties.swift */; };
+		5DBEA88129555FB800F03D02 /* ShoppingCocktailEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA87E29555FB800F03D02 /* ShoppingCocktailEntity+CoreDataClass.swift */; };
+		5DBEA88729556BC300F03D02 /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA88529556BC300F03D02 /* ShoppingTableViewCell.swift */; };
+		5DBEA88829556BC300F03D02 /* ShoppingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DBEA88629556BC300F03D02 /* ShoppingTableViewCell.xib */; };
 		F1110E906AA76509A3670BB4 /* Pods_Cocktail_DB_HCM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8DA09B3768D897CD7DB168 /* Pods_Cocktail_DB_HCM.framework */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +181,11 @@
 		5DBEA86E2954044900F03D02 /* CocktailEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CocktailEntity+CoreDataClass.swift"; path = "/Users/le.n.t.trung/Documents/Cocktail-DB-HCM/Cocktail-DB-HCM/Cocktail-DB-HCM/Platform/DataBaseManager/CocktailEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		5DBEA8762954148500F03D02 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		5DBEA8772954148500F03D02 /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
+		5DBEA87C29555AE100F03D02 /* ShoppingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingRepository.swift; sourceTree = "<group>"; };
+		5DBEA87E29555FB800F03D02 /* ShoppingCocktailEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ShoppingCocktailEntity+CoreDataClass.swift"; path = "/Users/le.n.t.trung/Documents/Cocktail-DB-HCM/Cocktail-DB-HCM/Cocktail-DB-HCM/Platform/DataBaseManager/ShoppingCocktailEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		5DBEA87F29555FB800F03D02 /* ShoppingCocktailEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ShoppingCocktailEntity+CoreDataProperties.swift"; path = "/Users/le.n.t.trung/Documents/Cocktail-DB-HCM/Cocktail-DB-HCM/Cocktail-DB-HCM/Platform/DataBaseManager/ShoppingCocktailEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		5DBEA88529556BC300F03D02 /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
+		5DBEA88629556BC300F03D02 /* ShoppingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingTableViewCell.xib; sourceTree = "<group>"; };
 		9DAC7CED95387B263F3839E6 /* Pods-Cocktail-DB-HCM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cocktail-DB-HCM.release.xcconfig"; path = "Target Support Files/Pods-Cocktail-DB-HCM/Pods-Cocktail-DB-HCM.release.xcconfig"; sourceTree = "<group>"; };
 		FDCCEBC7EDF3037D84D977E3 /* Pods-Cocktail-DB-HCM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cocktail-DB-HCM.debug.xcconfig"; path = "Target Support Files/Pods-Cocktail-DB-HCM/Pods-Cocktail-DB-HCM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -346,6 +356,7 @@
 			children = (
 				5D6F4796294DA4170030F90A /* CocktailRepository.swift */,
 				5DBEA8582953F0EB00F03D02 /* FavoritesRepository.swift */,
+				5DBEA87C29555AE100F03D02 /* ShoppingRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -389,6 +400,7 @@
 		5D6F472D294831AE0030F90A /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
+				5DBEA88429556BAE00F03D02 /* Cell */,
 				5D6F475F2948361C0030F90A /* ShoppingAssembler.swift */,
 				5D6F4761294836290030F90A /* ShoppingNavigator.swift */,
 				5D6F4763294836360030F90A /* ShoppingUseCase.swift */,
@@ -531,6 +543,8 @@
 		5DBEA85A2953F5EB00F03D02 /* DataBaseManager */ = {
 			isa = PBXGroup;
 			children = (
+				5DBEA87E29555FB800F03D02 /* ShoppingCocktailEntity+CoreDataClass.swift */,
+				5DBEA87F29555FB800F03D02 /* ShoppingCocktailEntity+CoreDataProperties.swift */,
 				5DBEA86E2954044900F03D02 /* CocktailEntity+CoreDataClass.swift */,
 				5DBEA86D2954044900F03D02 /* CocktailEntity+CoreDataProperties.swift */,
 				5DBEA85B2953F61600F03D02 /* DataBaseManager.swift */,
@@ -544,6 +558,15 @@
 			children = (
 				5DBEA8762954148500F03D02 /* FavoriteCollectionViewCell.swift */,
 				5DBEA8772954148500F03D02 /* FavoriteCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		5DBEA88429556BAE00F03D02 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5DBEA88529556BC300F03D02 /* ShoppingTableViewCell.swift */,
+				5DBEA88629556BC300F03D02 /* ShoppingTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -634,6 +657,7 @@
 				5D6F475E294835FB0030F90A /* SearchViewController.xib in Resources */,
 				5DA9E661294EDAEE00CC0FE1 /* HomeTableViewCell.xib in Resources */,
 				5DBEA8792954148500F03D02 /* FavoriteCollectionViewCell.xib in Resources */,
+				5DBEA88829556BC300F03D02 /* ShoppingTableViewCell.xib in Resources */,
 				5D6F4752294835B10030F90A /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,6 +745,7 @@
 				5DA9E64B294DB9E200CC0FE1 /* CocktailSectionModel.swift in Sources */,
 				5D6F47392948338D0030F90A /* AppUseCase.swift in Sources */,
 				5D43267A2952A49F006FF926 /* DetailViewModel.swift in Sources */,
+				5DBEA88729556BC300F03D02 /* ShoppingTableViewCell.swift in Sources */,
 				5D4326A52952EFCA006FF926 /* IngredientCollectionViewCell.swift in Sources */,
 				5D4326A12952D433006FF926 /* SimilarCocktailsTableViewCell.swift in Sources */,
 				5D6F4740294834020030F90A /* TabbarNavigator.swift in Sources */,
@@ -730,6 +755,7 @@
 				5D6F47752948369C0030F90A /* FavoriteViewController.swift in Sources */,
 				5D6F47602948361C0030F90A /* ShoppingAssembler.swift in Sources */,
 				5D6F4797294DA4170030F90A /* CocktailRepository.swift in Sources */,
+				5DBEA88029555FB800F03D02 /* ShoppingCocktailEntity+CoreDataProperties.swift in Sources */,
 				5D6F4778294837F80030F90A /* Bindable.swift in Sources */,
 				5D6F476C294836620030F90A /* FavoriteAssembler.swift in Sources */,
 				5D6F4766294836410030F90A /* ShoppingViewModel.swift in Sources */,
@@ -739,6 +765,7 @@
 				5D6F475A294835EB0030F90A /* SearchViewModel.swift in Sources */,
 				5D813F7229470F0100E845A8 /* AppDelegate.swift in Sources */,
 				5D6F47722948368F0030F90A /* FavoriteViewModel.swift in Sources */,
+				5DBEA88129555FB800F03D02 /* ShoppingCocktailEntity+CoreDataClass.swift in Sources */,
 				5DBEA8702954044900F03D02 /* CocktailEntity+CoreDataClass.swift in Sources */,
 				5D4326832952A513006FF926 /* DetailViewController.swift in Sources */,
 				5D43267C2952A4AD006FF926 /* DetailUseCase.swift in Sources */,
@@ -763,6 +790,7 @@
 				5D6F4764294836360030F90A /* ShoppingUseCase.swift in Sources */,
 				5D6F474C294835900030F90A /* HomeUseCase.swift in Sources */,
 				5D6F4756294835D30030F90A /* SearchNavigator.swift in Sources */,
+				5DBEA87D29555AE100F03D02 /* ShoppingRepository.swift in Sources */,
 				5D6F47692948364F0030F90A /* ShoppingViewController.swift in Sources */,
 				5DA9E65B294DC97100CC0FE1 /* AppAssembler.swift in Sources */,
 				5D4326862952A55C006FF926 /* DetailAssembler.swift in Sources */,

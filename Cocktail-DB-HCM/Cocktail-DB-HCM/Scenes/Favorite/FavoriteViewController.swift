@@ -18,6 +18,7 @@ final class FavoriteViewController: UIViewController {
     
     private let cocktailWillRemove = PublishSubject<Cocktail>()
     private let loadDataTrigger = PublishSubject<Void>()
+    private let reloadDataTrigger = PublishSubject<Void>()
     
     var viewModel: FavoriteViewModel!
     
@@ -31,7 +32,7 @@ final class FavoriteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadDataTrigger.onNext(())
+        reloadDataTrigger.onNext(())
     }
     
     private func configureView() {
@@ -70,6 +71,7 @@ extension FavoriteViewController: Bindable {
     
     func bindViewModel() {
         let input = FavoriteViewModel.Input(loadTrigger: Driver.just(()),
+                                            reloadTrigger: reloadDataTrigger.asDriver(onErrorJustReturn: ()),
                                             selectTrigger: collectionView.rx.itemSelected
             .asDriver(),
                                             deleteTrigger: cocktailWillRemove
@@ -77,6 +79,10 @@ extension FavoriteViewController: Bindable {
         let output = viewModel.transform(input: input, disposeBag: rx.disposeBag)
         
         output.loadData
+            .drive()
+            .disposed(by: rx.disposeBag)
+        
+        output.reloadData
             .drive()
             .disposed(by: rx.disposeBag)
         

@@ -25,6 +25,8 @@ final class HomeViewController: UIViewController {
     private var dataSource: DataSource!
     private let selectCocktailTrigger = PublishSubject<Cocktail>()
     private let selectCategoryTrigger = PublishSubject<CocktailCategory>()
+    private let reloadDataTrigger = PublishSubject<Void>()
+    private var isLoading = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +57,15 @@ extension HomeViewController: UITableViewDelegate {
         ? HomeScreenConstants.heightTableViewPosterCell
         : HomeScreenConstants.heightTableViewCell
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        let offsetConditionForReload = PageViewSetup.offsetConditionForReload
+        
+        if position < offsetConditionForReload && !isLoading {
+            reloadDataTrigger.onNext(())
+        }
+    }
 }
 
 extension HomeViewController {
@@ -63,6 +74,7 @@ extension HomeViewController {
             let cell = tableView.dequeueReusableCell(for: indexPath,
                                                      cellType: HomeTableViewCell.self)
             var model: CocktailSession
+            self.isLoading = false
             
             switch dataSource[indexPath] {
             case .popular(let cocktailSession):
@@ -88,9 +100,26 @@ extension HomeViewController {
 
 extension HomeViewController: Bindable {
     func bindViewModel() {
+        
+        let loadTrigger = Driver.just(())
+        loadTrigger
+            .drive(onNext: {_ in
+                self.isLoading = true
+            })
+            .disposed(by: rx.disposeBag)
+        
+        let reloadTrigger = reloadDataTrigger.asDriver(onErrorJustReturn: ())
+        
+        reloadTrigger
+            .drive(onNext: {_ in
+                self.isLoading = true
+            })
+            .disposed(by: rx.disposeBag)
+        
         let input = HomeViewModel.Input(
-            loadTrigger: Driver.just(()),
-            selectCocktailTrigger: selectCocktailTrigger.asDriver(onErrorJustReturn: Cocktail())
+            loadTrigger: Driver.merge(loadTrigger, reloadTrigger),
+            selectCocktailTrigger: selectCocktailTrigger.asDriver(onErrorJustReturn: Cocktail()),
+            selectCategoryTrigger: selectCategoryTrigger.asDriver(onErrorJustReturn: .none)
         )
         
         let output = viewModel.transform(input: input, disposeBag: disposeBag)
@@ -105,5 +134,11 @@ extension HomeViewController: Bindable {
                 .drive()
                 .disposed(by: rx.disposeBag)
         }
+        
+        output.isLoadingData
+            .drive(onNext: { [weak self] isLoading in
+                self?.handleIndicator(isLoading ? .show : .hide)
+            })
+            .disposed(by: rx.disposeBag)
     }
 }

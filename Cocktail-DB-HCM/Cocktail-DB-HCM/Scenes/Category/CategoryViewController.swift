@@ -1,8 +1,8 @@
 //
-//  SearchViewController.swift
+//  CategoryViewController.swift
 //  Cocktail-DB-HCM
 //
-//  Created by le.n.t.trung on 13/12/2022.
+//  Created by le.n.t.trung on 27/12/2022.
 //
 
 import UIKit
@@ -12,30 +12,29 @@ import RxCocoa
 import NSObject_Rx
 import Reusable
 
-final class SearchViewController: UIViewController {
+final class CategoryViewController: UIViewController {
     
-    @IBOutlet private weak var searchTextField: UITextField!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var searchBackgroundView: UIView!
-    @IBOutlet private weak var searchAlertLabel: UILabel!
+    @IBOutlet private weak var titleCategoryLabel: UILabel!
+    @IBOutlet private weak var backButton: UIButton!
     
-    var viewModel: SearchViewModel!
+    var viewModel: CategoryViewModel!
     var disposeBag = DisposeBag()
     
     private let loadMoreTrigger = PublishSubject<Void>()
-    private let reloadDataTrigger = PublishSubject<String>()
+    private let reloadDataTrigger = PublishSubject<Void>()
     private var isLoading = true
     private var isDisableLoadMore = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        configButtonTap()
         bindViewModel()
     }
     
     private func setupView() {
         view.backgroundColor = .black
-        navigationController?.navigationBar.isHidden = true
         tableView.do {
             $0.register(cellType: SearchTableViewCell.self)
             $0.separatorInset = UIEdgeInsets(
@@ -45,33 +44,41 @@ final class SearchViewController: UIViewController {
                 right: AppConstants.zeroPadding)
             $0.delegate = self
         }
-        
-        searchBackgroundView.do {
-            $0.makeCornerRadius(AppConstants.baseCornerRadius)
-        }
+    }
+    
+    private func configButtonTap() {
+        backButton.rx.tap.asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                guard let navigationVC = self.navigationController else { return }
+                  navigationVC.popViewController(animated: false)
+            })
+            .disposed(by: rx.disposeBag)
     }
 }
 
-extension SearchViewController: Bindable {
+extension CategoryViewController: Bindable {
     func bindViewModel() {
         
-        let searchBarTrigger = searchTextField.rx.text.orEmpty
-            .debounce(.milliseconds(SearchScreenConstants.debounceTime), scheduler: MainScheduler.instance)
-            .asDriver(onErrorJustReturn: "")
+        let loadTrigger = Driver.just(())
         
-        searchBarTrigger
+        loadTrigger
             .drive(onNext: {_ in
                 self.isLoading = true
             })
             .disposed(by: rx.disposeBag)
         
-        let input = SearchViewModel.Input(
-            searchBarTrigger: Driver.merge(searchBarTrigger, reloadDataTrigger.asDriver(onErrorJustReturn: "")),
+        let input = CategoryViewModel.Input(
+            loadTrigger: Driver.merge(loadTrigger, reloadDataTrigger.asDriver(onErrorJustReturn: ())),
             selectCocktailTrigger: tableView.rx.itemSelected.asDriver(onErrorDriveWith: .empty()),
             loadMoreTrigger: loadMoreTrigger.asDriver(onErrorJustReturn: ())
         )
         
         let output = viewModel.transform(input: input, disposeBag: rx.disposeBag)
+        
+        output.title
+            .drive(titleCategoryLabel.rx.text)
+            .disposed(by: rx.disposeBag)
         
         output.cocktails
             .drive(tableView.rx.items(cellIdentifier: SearchTableViewCell.reuseIdentifier,
@@ -86,10 +93,6 @@ extension SearchViewController: Bindable {
                 .drive()
                 .disposed(by: rx.disposeBag)
         }
-        
-        output.notFoundCocktail
-            .drive(searchAlertLabel.rx.isHidden)
-            .disposed(by: rx.disposeBag)
         
         output.disableLoadMore
             .drive(onNext: { isDisableLoadMore in
@@ -107,7 +110,7 @@ extension SearchViewController: Bindable {
     }
 }
 
-extension SearchViewController: UITableViewDelegate {
+extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SearchScreenConstants.heightTableViewCell
     }
@@ -123,7 +126,7 @@ extension SearchViewController: UITableViewDelegate {
         }
         
         if position < offsetConditionForReload && !isLoading {
-            reloadDataTrigger.onNext(searchTextField.text ?? "")
+            reloadDataTrigger.onNext(())
         }
     }
 }

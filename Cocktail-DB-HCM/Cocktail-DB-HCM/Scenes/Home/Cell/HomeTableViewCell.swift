@@ -21,6 +21,7 @@ final class HomeTableViewCell: UITableViewCell, NibReusable {
     override func awakeFromNib() {
         super.awakeFromNib()
         configureUI()
+        configButtonTap()
     }
     
     private func configureUI() {
@@ -43,16 +44,20 @@ final class HomeTableViewCell: UITableViewCell, NibReusable {
         }
         collectionView.collectionViewLayout = layout
     }
+    
+    private func configButtonTap() {
+        buttonViewAllButton.rx.tap.asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self, let model = self.model else { return }
+                self.onCocktailsCategoryTapped?(model.category)
+            })
+            .disposed(by: rx.disposeBag)
+    }
 
     func configure(model: CocktailSession) {
         self.model = model
         buttonViewAllButton.isHidden = model.category == CocktailCategory.random
         textCocktailSectionLabel.text = model.category.getTitle
-    }
-    
-    @IBAction private func didTapGetCocktailCategory(_ sender: Any) {
-        guard let model = model else { return }
-        onCocktailsCategoryTapped?(model.category)
     }
 }
 

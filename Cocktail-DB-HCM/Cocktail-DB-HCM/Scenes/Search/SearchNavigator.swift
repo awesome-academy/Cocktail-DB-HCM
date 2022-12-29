@@ -9,6 +9,7 @@ import UIKit
 
 protocol SearchNavigatorType {
     func toMain()
+    func toDetailScreen(cocktail: Cocktail)
 }
 
 struct SearchNavigator: SearchNavigatorType {
@@ -16,5 +17,10 @@ struct SearchNavigator: SearchNavigatorType {
     unowned let navigationController: UINavigationController
 
     func toMain() {
+    }
+    
+    func toDetailScreen(cocktail: Cocktail) {
+        let vc: DetailViewController = assembler.resolve(navigationController: navigationController, cocktail: cocktail)
+        navigationController.pushViewController(vc, animated: false)
     }
 }

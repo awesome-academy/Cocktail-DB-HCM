@@ -1,28 +1,29 @@
 //
-//  SearchViewModel.swift
+//  CategoryViewModel.swift
 //  Cocktail-DB-HCM
 //
-//  Created by le.n.t.trung on 13/12/2022.
+//  Created by le.n.t.trung on 27/12/2022.
 //
 
 import UIKit
 import RxSwift
 import RxCocoa
 
-struct SearchViewModel {
-    let navigator: SearchNavigatorType
-    let useCase: SearchUseCaseType
+struct CategoryViewModel {
+    let navigator: CategoryNavigatorType
+    let useCase: CategoryUseCaseType
+    let category: CocktailCategory
     
     struct Input {
-        let searchBarTrigger: Driver<String>
+        let loadTrigger: Driver<Void>
         let selectCocktailTrigger: Driver<IndexPath>
         let loadMoreTrigger: Driver<Void>
     }
     
     struct Output {
-        let cocktails: Driver<[Cocktail]>
+        let title: Driver<String>
         let voidDrivers: [Driver<Void>]
-        let notFoundCocktail: Driver<Bool>
+        let cocktails: Driver<[Cocktail]>
         let disableLoadMore: Driver<Bool>
         let isLoading: Driver<Bool>
     }
@@ -32,17 +33,16 @@ struct SearchViewModel {
         let currentPage = BehaviorRelay<Int>(value: 1)
         let dataSource = BehaviorRelay<[Cocktail]>(value: [])
         let dataSourceToShow = BehaviorRelay<[Cocktail]>(value: [])
-        let handleQuery = BehaviorRelay<String>(value: "")
-        let notFoundCocktail = BehaviorRelay<Bool>(value: true)
         let disableLoadMore = BehaviorRelay<Bool>(value: true)
         let isLoading = BehaviorRelay<Bool>(value: false)
         
-        input.searchBarTrigger
-            .map { $0.replacingOccurrences(of: " ", with: "%20") }
-            .do(onNext: handleQuery.accept(_:))
-            .flatMapLatest { query in
+        let title = input.loadTrigger
+            .map { category.getTitle }
+        
+        input.loadTrigger
+            .flatMapLatest { _ in
                 isLoading.accept(true)
-                return useCase.getCocktailsByName(query: query)
+                return useCase.getListCocktails(category: category)
                     .asDriver(onErrorJustReturn: [])
                     .do { _ in
                         isLoading.accept(false)
@@ -53,7 +53,6 @@ struct SearchViewModel {
                 dataSourceToShow.accept(Array($0.prefix(PageViewSetup.numberOfItemPerPage)))
                 disableLoadMore.accept($0.count <= PageViewSetup.numberOfItemPerPage)
                 currentPage.accept(1)
-                notFoundCocktail.accept(!($0.isEmpty && !handleQuery.value.isEmpty))
             })
             .disposed(by: disposeBag)
         
@@ -80,9 +79,9 @@ struct SearchViewModel {
             .do(onNext: navigator.toDetailScreen(cocktail:))
             .map { _ in }
                 
-        return Output(cocktails: dataSourceToShow.asDriver(),
+        return Output(title: title,
                       voidDrivers: [selectedCocktailId],
-                      notFoundCocktail: notFoundCocktail.asDriver(),
+                      cocktails: dataSourceToShow.asDriver(),
                       disableLoadMore: disableLoadMore.asDriver(),
                       isLoading: isLoading.asDriver())
     }

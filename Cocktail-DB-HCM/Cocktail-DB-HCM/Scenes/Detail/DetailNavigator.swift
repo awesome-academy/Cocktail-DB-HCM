@@ -20,8 +20,7 @@ struct DetailNavigator: DetailNavigatorType {
     }
     
     func toDetail(detail: Cocktail) {
-        let detailNavController = UINavigationController()
-        let vc: DetailViewController = assembler.resolve(navigationController: detailNavController, cocktail: detail)
+        let vc: DetailViewController = assembler.resolve(navigationController: navigationController, cocktail: detail)
         navigationController.pushViewController(vc, animated: false)
     }
 }

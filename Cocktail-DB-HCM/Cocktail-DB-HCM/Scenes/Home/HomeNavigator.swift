@@ -10,9 +10,11 @@ import UIKit
 protocol HomeNavigatorType {
     func toMain()
     func toDetailScreen(cocktail: Cocktail)
+    func toCocktailsCategoryScreen(category: CocktailCategory)
 }
 
 struct HomeNavigator: HomeNavigatorType {
+    
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
 
@@ -20,8 +22,13 @@ struct HomeNavigator: HomeNavigatorType {
     }
     
     func toDetailScreen(cocktail: Cocktail) {
-        let detailNavController = UINavigationController()
-        let vc: DetailViewController = assembler.resolve(navigationController: detailNavController, cocktail: cocktail)
+        let vc: DetailViewController = assembler.resolve(navigationController: navigationController, cocktail: cocktail)
+        navigationController.pushViewController(vc, animated: false)
+    }
+    
+    func toCocktailsCategoryScreen(category: CocktailCategory) {
+        let vc: CategoryViewController = assembler.resolve(navigationController: navigationController,
+                                                           category: category)
         navigationController.pushViewController(vc, animated: false)
     }
 }

@@ -14,7 +14,8 @@ protocol Assembler: AnyObject,
                     SearchAssembler,
                     ShoppingAssembler,
                     FavoriteAssembler,
-                    DetailAssembler {
+                    DetailAssembler,
+                    CategoryAssembler {
 }
 
 final class DefaultAssembler: Assembler {

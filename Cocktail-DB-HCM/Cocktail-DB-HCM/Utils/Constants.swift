@@ -73,3 +73,27 @@ enum FavoriteCollectionCell {
     static let spacing = 16
     static let heightCollectionViewCell = 250.0
 }
+
+enum PageViewSetup {
+    static let heightLoadingView = 100.0
+    static let numberOfItemPerPage = 10
+    static let offsetConditionForReload = -100.0
+}
+
+func createSpinner(width: CGFloat) -> UIView {
+    let spinnerBackgroundView = UIView(
+        frame: CGRect(
+            x: 0,
+            y: 0,
+            width: width,
+            height: PageViewSetup.heightLoadingView))
+    
+    let spinner = UIActivityIndicatorView().then {
+        $0.center = spinnerBackgroundView.center
+        $0.startAnimating()
+        $0.color = .white
+    }
+    
+    spinnerBackgroundView.addSubview(spinner)
+    return spinnerBackgroundView
+}

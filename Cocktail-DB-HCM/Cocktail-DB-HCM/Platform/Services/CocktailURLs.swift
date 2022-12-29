@@ -29,7 +29,8 @@ struct CocktailURLs {
     }
     
     func getFilterCocktailByCategory(category: String) -> String {
-        return "\(baseURL)filter.php?c=\(category)"
+        let finalCategory = category.isEmpty ? "COCKTAIL" : category
+        return "\(baseURL)filter.php?c=\(finalCategory)"
     }
     
     func getIngredientImage(name: String) -> String {

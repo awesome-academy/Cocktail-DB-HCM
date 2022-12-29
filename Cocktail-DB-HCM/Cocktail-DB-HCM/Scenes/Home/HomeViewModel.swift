@@ -19,6 +19,7 @@ extension HomeViewModel: ViewModelType {
     struct Input {
         let loadTrigger: Driver<Void>
         let selectCocktailTrigger: Driver<Cocktail>
+        let selectCategoryTrigger: Driver<CocktailCategory>
     }
     
     struct Output {
@@ -28,11 +29,15 @@ extension HomeViewModel: ViewModelType {
         var isReloading = false
         var isLoadingMore = false
         var isEmpty = false
+        let isLoadingData: Driver<Bool>
     }
 
     func transform(input: Input, disposeBag: DisposeBag) -> Output {
+        let isLoading = BehaviorRelay<Bool>(value: false)
+        
         let random = input.loadTrigger
             .flatMapLatest { _ in
+                isLoading.accept(true)
                 return useCase.getListCocktails(category: .random)
                     .asDriver(onErrorJustReturn: [])
                     .map {
@@ -41,6 +46,7 @@ extension HomeViewModel: ViewModelType {
             }
         let popular = input.loadTrigger
             .flatMapLatest { _ in
+                isLoading.accept(true)
                 return useCase.getListCocktails(category: .popular)
                     .asDriver(onErrorJustReturn: [])
                     .map {
@@ -50,6 +56,7 @@ extension HomeViewModel: ViewModelType {
         
         let latest = input.loadTrigger
             .flatMapLatest { _ in
+                isLoading.accept(true)
                 return useCase.getListCocktails(category: .latest)
                     .asDriver(onErrorJustReturn: [])
                     .map {
@@ -59,6 +66,7 @@ extension HomeViewModel: ViewModelType {
         
         let cocktails = Driver.combineLatest(random, popular, latest)
             .map { random, popular, latest -> [CocktailsSection] in
+                isLoading.accept(true)
                 return [
                     .cocktails(items: [
                         .random(model: random),
@@ -68,12 +76,20 @@ extension HomeViewModel: ViewModelType {
                 ]
             }
             .asDriver(onErrorJustReturn: [])
+            .do { _ in
+                isLoading.accept(false)
+            }
         
         let selectedCocktailId = input.selectCocktailTrigger
             .do(onNext: navigator.toDetailScreen(cocktail:))
             .map { _ in }
         
+        let selectedCocktailCategory = input.selectCategoryTrigger
+            .do(onNext: navigator.toCocktailsCategoryScreen(category:))
+            .map { _ in }
+        
         return Output(cocktails: cocktails,
-                      voidDrivers: [selectedCocktailId])
+                      voidDrivers: [selectedCocktailId, selectedCocktailCategory],
+                      isLoadingData: isLoading.asDriver())
     }
 }

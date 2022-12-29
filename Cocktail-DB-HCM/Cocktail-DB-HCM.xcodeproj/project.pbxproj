@@ -93,6 +93,13 @@
 		5DBEA88129555FB800F03D02 /* ShoppingCocktailEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA87E29555FB800F03D02 /* ShoppingCocktailEntity+CoreDataClass.swift */; };
 		5DBEA88729556BC300F03D02 /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEA88529556BC300F03D02 /* ShoppingTableViewCell.swift */; };
 		5DBEA88829556BC300F03D02 /* ShoppingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DBEA88629556BC300F03D02 /* ShoppingTableViewCell.xib */; };
+		5DCAD504295ADB60004C46E3 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCAD503295ADB60004C46E3 /* UIViewController+.swift */; };
+		5DCAD507295ADE88004C46E3 /* CategoryAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCAD506295ADE88004C46E3 /* CategoryAssembler.swift */; };
+		5DCAD509295ADE93004C46E3 /* CategoryNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCAD508295ADE93004C46E3 /* CategoryNavigator.swift */; };
+		5DCAD50B295ADE9F004C46E3 /* CategoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCAD50A295ADE9F004C46E3 /* CategoryUseCase.swift */; };
+		5DCAD50D295ADEAA004C46E3 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCAD50C295ADEAA004C46E3 /* CategoryViewModel.swift */; };
+		5DCAD510295ADECB004C46E3 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCAD50E295ADECB004C46E3 /* CategoryViewController.swift */; };
+		5DCAD511295ADECB004C46E3 /* CategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DCAD50F295ADECB004C46E3 /* CategoryViewController.xib */; };
 		F1110E906AA76509A3670BB4 /* Pods_Cocktail_DB_HCM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8DA09B3768D897CD7DB168 /* Pods_Cocktail_DB_HCM.framework */; };
 /* End PBXBuildFile section */
 
@@ -186,6 +193,13 @@
 		5DBEA87F29555FB800F03D02 /* ShoppingCocktailEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ShoppingCocktailEntity+CoreDataProperties.swift"; path = "/Users/le.n.t.trung/Documents/Cocktail-DB-HCM/Cocktail-DB-HCM/Cocktail-DB-HCM/Platform/DataBaseManager/ShoppingCocktailEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		5DBEA88529556BC300F03D02 /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
 		5DBEA88629556BC300F03D02 /* ShoppingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingTableViewCell.xib; sourceTree = "<group>"; };
+		5DCAD503295ADB60004C46E3 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		5DCAD506295ADE88004C46E3 /* CategoryAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAssembler.swift; sourceTree = "<group>"; };
+		5DCAD508295ADE93004C46E3 /* CategoryNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNavigator.swift; sourceTree = "<group>"; };
+		5DCAD50A295ADE9F004C46E3 /* CategoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryUseCase.swift; sourceTree = "<group>"; };
+		5DCAD50C295ADEAA004C46E3 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		5DCAD50E295ADECB004C46E3 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		5DCAD50F295ADECB004C46E3 /* CategoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryViewController.xib; sourceTree = "<group>"; };
 		9DAC7CED95387B263F3839E6 /* Pods-Cocktail-DB-HCM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cocktail-DB-HCM.release.xcconfig"; path = "Target Support Files/Pods-Cocktail-DB-HCM/Pods-Cocktail-DB-HCM.release.xcconfig"; sourceTree = "<group>"; };
 		FDCCEBC7EDF3037D84D977E3 /* Pods-Cocktail-DB-HCM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cocktail-DB-HCM.debug.xcconfig"; path = "Target Support Files/Pods-Cocktail-DB-HCM/Pods-Cocktail-DB-HCM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -305,6 +319,7 @@
 		5D6F472329482F500030F90A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				5DCAD505295ADE5C004C46E3 /* Category */,
 				5D43264E2952A2A2006FF926 /* Detail */,
 				5D6F473A294833B90030F90A /* Tabbar */,
 				5D6F472F294831EF0030F90A /* App */,
@@ -453,6 +468,7 @@
 				5D6F477D294846B10030F90A /* UIColor+.swift */,
 				5DA9E654294DC13700CC0FE1 /* UIImageView+.swift */,
 				5D43264C29529F28006FF926 /* UIView+.swift */,
+				5DCAD503295ADB60004C46E3 /* UIViewController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -571,6 +587,19 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		5DCAD505295ADE5C004C46E3 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				5DCAD506295ADE88004C46E3 /* CategoryAssembler.swift */,
+				5DCAD508295ADE93004C46E3 /* CategoryNavigator.swift */,
+				5DCAD50A295ADE9F004C46E3 /* CategoryUseCase.swift */,
+				5DCAD50C295ADEAA004C46E3 /* CategoryViewModel.swift */,
+				5DCAD50E295ADECB004C46E3 /* CategoryViewController.swift */,
+				5DCAD50F295ADECB004C46E3 /* CategoryViewController.xib */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		D90DCFB51869907B08CEE454 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,6 +677,7 @@
 				5D6F477B294840FD0030F90A /* Main.storyboard in Resources */,
 				5D813F7E29470F0200E845A8 /* LaunchScreen.storyboard in Resources */,
 				5D813F7B29470F0200E845A8 /* Assets.xcassets in Resources */,
+				5DCAD511295ADECB004C46E3 /* CategoryViewController.xib in Resources */,
 				5D6F476A2948364F0030F90A /* ShoppingViewController.xib in Resources */,
 				5DA65527295168AC00E43FBF /* SearchTableViewCell.xib in Resources */,
 				5D4326A22952D433006FF926 /* SimilarCocktailsTableViewCell.xib in Resources */,
@@ -742,9 +772,12 @@
 				5D6F47352948331C0030F90A /* AppViewModel.swift in Sources */,
 				5D43269D2952D41F006FF926 /* IngredientTableViewCell.swift in Sources */,
 				5D6F4733294832CC0030F90A /* AppNavigator.swift in Sources */,
+				5DCAD504295ADB60004C46E3 /* UIViewController+.swift in Sources */,
+				5DCAD50B295ADE9F004C46E3 /* CategoryUseCase.swift in Sources */,
 				5DA9E64B294DB9E200CC0FE1 /* CocktailSectionModel.swift in Sources */,
 				5D6F47392948338D0030F90A /* AppUseCase.swift in Sources */,
 				5D43267A2952A49F006FF926 /* DetailViewModel.swift in Sources */,
+				5DCAD507295ADE88004C46E3 /* CategoryAssembler.swift in Sources */,
 				5DBEA88729556BC300F03D02 /* ShoppingTableViewCell.swift in Sources */,
 				5D4326A52952EFCA006FF926 /* IngredientCollectionViewCell.swift in Sources */,
 				5D4326A12952D433006FF926 /* SimilarCocktailsTableViewCell.swift in Sources */,
@@ -792,6 +825,9 @@
 				5D6F4756294835D30030F90A /* SearchNavigator.swift in Sources */,
 				5DBEA87D29555AE100F03D02 /* ShoppingRepository.swift in Sources */,
 				5D6F47692948364F0030F90A /* ShoppingViewController.swift in Sources */,
+				5DCAD509295ADE93004C46E3 /* CategoryNavigator.swift in Sources */,
+				5DCAD50D295ADEAA004C46E3 /* CategoryViewModel.swift in Sources */,
+				5DCAD510295ADECB004C46E3 /* CategoryViewController.swift in Sources */,
 				5DA9E65B294DC97100CC0FE1 /* AppAssembler.swift in Sources */,
 				5D4326862952A55C006FF926 /* DetailAssembler.swift in Sources */,
 				5D6F477E294846B10030F90A /* UIColor+.swift in Sources */,
